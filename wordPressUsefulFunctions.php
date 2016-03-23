@@ -79,7 +79,7 @@ function get_feature_slider ($cat) {
 		the_content();
 		print ('</div></div></div>');
 
-	endwhile; wp_reset_query();
+	endwhile; wp_reset_postdata();
 	print ('</div>');
 }
 
@@ -172,7 +172,7 @@ function the_categories_with_class($separator = ' ') {
 add_filter('wp_list_categories', 'add_slug_class_wp_list_categories');
 
 /**
- * Do the work to pagination work on custom post types listing pages.
+ * Do the work to pagination on custom post types listing pages.
  *
  */
 define('PER_PAGE_DEFAULT', 10);
