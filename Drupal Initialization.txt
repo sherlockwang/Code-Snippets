@@ -2,6 +2,10 @@
 Adminimal - Responsive Administration Theme (Drupal 8 ready!)
 https://www.drupal.org/project/adminimal_theme
 
+// Nice Drupal Admin Menu
+Adminimal Administration Menu
+https://www.drupal.org/project/adminimal_admin_menu
+
 // Drupal foundation theme
 ZURB Foundation
 https://www.drupal.org/project/zurb_foundation
