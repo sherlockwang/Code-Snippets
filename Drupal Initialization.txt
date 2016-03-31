@@ -46,3 +46,6 @@ https://www.drupal.org/project/entityreference
 
 Entity API
 https://www.drupal.org/project/entity
+
+Devel
+https://www.drupal.org/project/devel
