@@ -1,0 +1,48 @@
+// Nice Drupal Admin Theme
+Adminimal - Responsive Administration Theme (Drupal 8 ready!)
+https://www.drupal.org/project/adminimal_theme
+
+// Drupal foundation theme
+ZURB Foundation
+https://www.drupal.org/project/zurb_foundation
+
+// Drupal bootstrap theme
+Bootstrap
+https://www.drupal.org/project/bootstrap
+
+// Drupal 7 Useful Modules
+Administration menu
+https://www.drupal.org/project/admin_menu
+
+jQuery Update
+https://www.drupal.org/project/jquery_update
+
+Views
+https://www.drupal.org/project/views
+
+Chaos tool suite (ctools)
+https://www.drupal.org/project/ctools
+
+Module Filter
+https://www.drupal.org/project/module_filter
+
+Fences
+https://www.drupal.org/project/fences
+
+Token
+https://www.drupal.org/project/token
+
+Pathauto
+https://www.drupal.org/project/pathauto
+
+Features
+https://www.drupal.org/project/features
+
+CKEditor - WYSIWYG HTML editor
+https://www.drupal.org/project/ckeditor
+
+Entity reference
+https://www.drupal.org/project/entityreference
+
+Entity API
+https://www.drupal.org/project/entity
