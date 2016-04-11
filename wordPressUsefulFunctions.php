@@ -124,16 +124,18 @@ function get_single_tax_terms ($post, $tax) {
 *	Set meta field to orderby query
 */
 function custom_orderby( $query ) {  
-    if( $_GET['orderby'] == 'suggested_retail_price' ){
-        set_query_var('orderby', 'meta_value_num');
-        set_query_var('meta_key', $_GET['orderby']);
-        set_query_var('order', $_GET['order']);
-    } else {
-    	set_query_var('orderby', $_GET['orderby']);
-    	set_query_var('order', $_GET['order']);
-    }
+	if (array_key_exists('orderby', $_GET)) {
+		if( $_GET['orderby'] == 'suggested_retail_price' ){
+	        set_query_var('orderby', 'meta_value_num');
+	        set_query_var('meta_key', $_GET['orderby']);
+	        set_query_var('order', $_GET['order']);
+	    } else {
+	    	set_query_var('orderby', $_GET['orderby']);
+	    	set_query_var('order', $_GET['order']);
+	    }
+	}
 }
-add_action( 'pre_get_posts', 'custom_orderby' ); 
+add_action( 'pre_get_posts', 'custom_orderby' );
 
 /**
 *	Build taxonomy terms to checkbox
