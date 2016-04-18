@@ -68,3 +68,30 @@ $.each(data["TopicCodeIDs"], function(index, value) {
 	// Push this value to another temp array
 	topic.push(value);
 });
+
+/**
+*	Change list to dropdown and append up and down arrow
+*/
+// append arrow element
+$('#categories-3 .widgettitle').append('<div class="arrow-down"></div>');
+// hide list
+$('#categories-3 ul').hide();
+// set mouse to pointer
+$('#categories-3 h4').css("cursor", "pointer");
+// add click event to list title
+$('#categories-3 h4').click(function() {
+	// target follow list
+	var dropdown = $(this).next();
+	// function execute after slide animation finished
+	dropdown.slideToggle(function() {
+		if (dropdown.is(':visible')) {
+			// remove current arrow
+			$('#categories-3 .arrow-down').remove();
+			// add new arrow
+			$('#categories-3 .widgettitle').append('<div class="arrow-up"></div>');
+		} else {
+			$('#categories-3 .arrow-up').remove();
+			$('#categories-3 .widgettitle').append('<div class="arrow-down"></div>');
+		}
+	});
+});
