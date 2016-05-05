@@ -95,3 +95,8 @@ $('#categories-3 h4').click(function() {
 		}
 	});
 });
+
+/**
+*	Global go back button in html
+*/
+"<a href=" + history.go(-1) + ">"
