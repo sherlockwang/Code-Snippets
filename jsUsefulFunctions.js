@@ -1,7 +1,8 @@
 /**
 *	Set $ to jQuery
 */
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
+
 });
 
 /**
@@ -30,7 +31,7 @@ function urlQuery (data) {
 /**
 *	Checkbox input value to array, delete value when unchecked
 */
-$('#checkbox-type input[type="checkbox"]').change(function(){
+$('#checkbox-type input[type="checkbox"]').change(function () {
 	// Get Checkbox Value
 	var temp_input = $(this).val();
 	// If "checked"
@@ -40,9 +41,7 @@ $('#checkbox-type input[type="checkbox"]').change(function(){
 			// Push value in
 			typeID.push(temp_input);
 		}
-	}
-	// If "unchecked"
-	else {
+	} else {  // If "unchecked"
 		// Check if value already existed in array 
 		if ($.inArray(temp_input, typeID) != -1) {
 			// Delete this element
@@ -55,9 +54,9 @@ $('#checkbox-type input[type="checkbox"]').change(function(){
 *	Check Checkbox if value is already in array
 */
 // Iterate each value in array
-$.each(data["TopicCodeIDs"], function(index, value) {
+$.each(data["TopicCodeIDs"], function (index, value) {
 	// Iterate each checkbox
-	$.each($('#checkbox-track input'), function() {
+	$.each($('#checkbox-track input'), function () {
 		// Get checkbox value
 		var checkboxValue = $(this).val();
 		if (checkboxValue == value) {
@@ -79,11 +78,11 @@ $('#categories-3 ul').hide();
 // set mouse to pointer
 $('#categories-3 h4').css("cursor", "pointer");
 // add click event to list title
-$('#categories-3 h4').click(function() {
+$('#categories-3 h4').click(function () {
 	// target follow list
 	var dropdown = $(this).next();
 	// function execute after slide animation finished
-	dropdown.slideToggle(function() {
+	dropdown.slideToggle(function () {
 		if (dropdown.is(':visible')) {
 			// remove current arrow
 			$('#categories-3 .arrow-down').remove();
@@ -95,6 +94,13 @@ $('#categories-3 h4').click(function() {
 		}
 	});
 });
+
+/**
+*	Airbnb jQuery code format standard
+*	$categories3 = $('#categories-3');
+* $('#categories-3 h4') = $categories3.find('h4');
+*	$('#categories-3 .arrow-down') = $categories3.find('.arrow-down');
+*/
 
 /**
 *	Global go back button in html
