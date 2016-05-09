@@ -17,7 +17,7 @@ add_action('wp_enqueue_scripts', 'child_theme_style', 1000);
 * Remove Parent custom.js
 */
 function customjs_dequeue_script() {
-   wp_dequeue_script( 'customjs' );
+  wp_dequeue_script( 'customjs' );
 }
 add_action( 'wp_print_scripts', 'customjs_dequeue_script' );
 
@@ -26,22 +26,22 @@ add_action( 'wp_print_scripts', 'customjs_dequeue_script' );
 *	Not Work with custom Taxonomy filter
 */
 function orderby_tax_clauses( $clauses, $wp_query ) {
-    global $wpdb;
-    $taxonomies = get_taxonomies();
-    foreach ($taxonomies as $taxonomy) {
-        if ( isset( $wp_query->query['orderby'] ) && $taxonomy == $wp_query->query['orderby'] ) {
-            $clauses['join'] .=<<<SQL
+  global $wpdb;
+  $taxonomies = get_taxonomies();
+  foreach ($taxonomies as $taxonomy) {
+      if ( isset( $wp_query->query['orderby'] ) && $taxonomy == $wp_query->query['orderby'] ) {
+          $clauses['join'] .=<<<SQL
 LEFT OUTER JOIN {$wpdb->term_relationships} ON {$wpdb->posts}.ID={$wpdb->term_relationships}.object_id
 LEFT OUTER JOIN {$wpdb->term_taxonomy} USING (term_taxonomy_id)
 LEFT OUTER JOIN {$wpdb->terms} USING (term_id)
 SQL;
-            $clauses['where'] .= " AND (taxonomy = '{$taxonomy}' OR taxonomy IS NULL)";
-            $clauses['groupby'] = "object_id";
-            $clauses['orderby'] = "GROUP_CONCAT({$wpdb->terms}.name ORDER BY name ASC) ";
-            $clauses['orderby'] .= ( 'ASC' == strtoupper( $wp_query->get('order') ) ) ? 'ASC' : 'DESC';
-        }
-    }
-    return $clauses;
+          $clauses['where'] .= " AND (taxonomy = '{$taxonomy}' OR taxonomy IS NULL)";
+          $clauses['groupby'] = "object_id";
+          $clauses['orderby'] = "GROUP_CONCAT({$wpdb->terms}.name ORDER BY name ASC) ";
+          $clauses['orderby'] .= ( 'ASC' == strtoupper( $wp_query->get('order') ) ) ? 'ASC' : 'DESC';
+      }
+  }
+  return $clauses;
 }
 add_filter('posts_clauses', 'orderby_tax_clauses', 10, 2 );
 
@@ -66,6 +66,7 @@ function get_feature_slider ($cat) {
 					),
 				),
 		);
+
 	$slides = new WP_Query($args);
 	// Use print to set html structure for slider
 	print ('<div class="feature-slider">');
@@ -79,7 +80,9 @@ function get_feature_slider ($cat) {
 		the_content();
 		print ('</div></div></div>');
 
-	endwhile; wp_reset_postdata();
+	endwhile;
+
+	wp_reset_postdata();
 	print ('</div>');
 }
 
@@ -98,6 +101,7 @@ function get_frame_terms ($post) {
 		foreach ($terms as $value) {
 			$string .= ",$value";
 		}
+
 		$string = substr($string, 1);
 		print '<div class="' . $tax . '">' . $string . '</div>';
 	}
@@ -116,6 +120,7 @@ function get_single_tax_terms ($post, $tax) {
 	foreach ($terms as $value) {
 		$string .= ",$value";
 	}
+
 	$string = substr($string, 1);
 	print '<div class="' . $tax . '">' . $tax_name . ": " . $string . '</div>';
 }
@@ -164,12 +169,14 @@ function add_slug_class_wp_list_categories($list) {
 		$replace = 'cat-item-' . $cat->slug . ' cat-item-' . $cat->term_id . ' ';
 		$list = str_replace( $find, $replace, $list );
 	}
+
 	return $list;
 }
 function the_categories_with_class($separator = ' ') {
 	foreach((get_the_category()) as $cat) {
     	echo $separator . '<a href="' . get_category_link($cat->term_id) . '"  class="' . $cat->slug . '">' . $cat->cat_name . '</a>';
-    }
+  }
+  
 }
 add_filter('wp_list_categories', 'add_slug_class_wp_list_categories');
 
@@ -180,16 +187,16 @@ add_filter('wp_list_categories', 'add_slug_class_wp_list_categories');
 define('PER_PAGE_DEFAULT', 10);
 function custom_query_posts(array $query = array())
 {
-        global $wp_query;
-        wp_reset_query();
- 
-        $paged = get_query_var('paged') ? get_query_var('paged') : 1;
- 
-        $defaults = array(
-                'paged'                         => $paged,
-                'posts_per_page'        => PER_PAGE_DEFAULT
-        );
-        $query += $defaults;
- 
-        $wp_query = new WP_Query($query);
+  global $wp_query;
+  wp_reset_query();
+
+  $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+
+  $defaults = array(
+          'paged'                         => $paged,
+          'posts_per_page'        => PER_PAGE_DEFAULT
+  );
+  $query += $defaults;
+
+  $wp_query = new WP_Query($query);
 }
